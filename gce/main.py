@@ -20,6 +20,11 @@ app = Flask(__name__)
 def say_hello():
     return "Hello, world!"
 
+@app.route("/post", methods=['POST'])
+def data():
+    post_data = request.form
+    print(post_data)
+    return post_data
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)

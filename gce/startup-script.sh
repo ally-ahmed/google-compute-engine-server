@@ -30,18 +30,18 @@ useradd -m -d /home/pythonapp pythonapp
 
 # Fetch source code
 export HOME=/root
-git clone https://github.com/ally-ahmed/google-compute-engine-server.git /opt/app
+git clone https://github.com/GoogleCloudPlatform/getting-started-python.git /opt/app
 
 # Python environment setup
-virtualenv -p python3 /opt/app/env
-source /opt/app/env/bin/activate
-/opt/app/env/bin/pip install -r /opt/app/requirements.txt
+virtualenv -p python3 /opt/app/gce/env
+source /opt/app/gce/env/bin/activate
+/opt/app/gce/env/bin/pip install -r /opt/app/gce/requirements.txt
 
 # Set ownership to newly created account
 chown -R pythonapp:pythonapp /opt/app
 
 # Put supervisor configuration in proper place
-cp /opt/app/python-app.conf /etc/supervisor/conf.d/python-app.conf
+cp /opt/app/gce/python-app.conf /etc/supervisor/conf.d/python-app.conf
 
 # Start service via supervisorctl
 supervisorctl reread
